@@ -1,0 +1,39 @@
+<div class="container">
+		
+	<!-- Parking View Goes Here -->
+	
+	<script type="text/template" id="car-park-template">
+		<div>
+				<h1><%= item.location_name %></h1>
+			
+			
+				<% console.log("from template...", item) %>
+				
+				<div class="availablity">
+					<%= item.available_spots %> Free Spaces
+				</div>
+				
+				<div class="price">
+					 <%= item.price_formatted %> per hour
+				</div>
+		</div>
+		
+		<div class="amenities">	
+				
+			<% _.each(getAmenities(item), function(amenity){ %>
+
+				<%= amenity %>
+				
+			<% }); %>
+
+		</div>
+				
+	</script>
+	
+	<div id="car-park"><!-- template --></div>
+	
+
+</div>
+
+<script src="scripts/app.js" type="text/javascript" charset="utf-8"></script>
+<script src="scripts/parking.js" type="text/javascript" charset="utf-8"></script>

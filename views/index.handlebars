@@ -1,0 +1,81 @@
+<div class="container">
+    <header>
+		<div id="logo">
+			<img src="images/logo.png">
+		</div>
+
+		<div id="links">
+			<a href="">Explore <span class="caret">&#x25BE;</span></a>
+			<a href="">About the Score</a>
+			<a href="">About CityIQ</a>
+			<a href="">Blog</a>
+		</div>
+		
+    </header>
+
+	<section id="banner">
+		
+		<div id="search">
+			<div id="searchUI"><!-- template --></div>
+	
+			<script type="text/template" id="resultsBox-template">
+				<ul class="results">
+
+					<% _.each(results, function(result){ %>
+												
+						<li><a class="result" rel="<%= result.id %>">
+							<% _.each(result.items, function(item) { %>
+								<span> <%= item.name %> </span> 
+							<%  }); %>
+						</a></li> 
+					<% }); %>
+				</ul>
+			</script>
+			<div id="resultsBox"><!-- template --></div>
+		</div>
+		
+	</section>
+	<section id="main">
+		<div class="column">
+			<h3>CityIQ Scores</h3>
+			<p>From crime and economics to health and transportation, we’ve compiled a wealth of data on cities, counties, and states to give you the most accurate and unbiased ratings for anywhere across the US. Find out what makes up a CityIQ score.</p>
+			<div class="factors">
+				<img src="images/factors/affordability.png" class="factor"/>
+				<img src="images/factors/community.png" class="factor"/>
+				<img src="images/factors/economy.png" class="factor"/>
+				<img src="images/factors/education.png" class="factor"/>
+				<br/>
+				<img src="images/factors/enviornment.png" class="factor"/>
+				<img src="images/factors/leisure.png" class="factor"/>
+				<img src="images/factors/safety.png" class="factor"/>
+				<img src="images/factors/transportation.png" class="factor"/>
+			</div>
+		</div>
+		
+		<div class="column">
+			<h3>Compare</h3>
+			<p>Our algorithm intelligently weights each factor as it pertains to the overall quality of life in a given area. Check out our compare tool to see how your city stacks up against where your friends and family are.</p>
+			<br/>
+			<br/>
+			<img src="images/home/compare.png"/>
+		</div>
+
+		<div class="column">
+			<h3>Top Cities</h3>
+			<p>Every city strives to provide the best for their citizens, but often times, the data tells a different story. Take a look at CityIQ’s ranking of the top small, medium, and large cities based on the raw data: nothing more, nothing less.</p>
+			<img src="images/home/badge.png"/>
+			
+		</div>
+		
+	</section>
+    <footer>
+		<img class="poweredBy" src="images/powered-by.png" alt="Powered By"/>
+    </footer>
+	
+</div>
+
+<script src="scripts/app.js" type="text/javascript" charset="utf-8"></script>
+<script src="scripts/index.js" type="text/javascript" charset="utf-8"></script>
+<!--script src="scripts/map.js" type="text/javascript" charset="utf-8"></script-->
+
+<!--script src="scripts/factors.js" type="text/javascript" charset="utf-8"></script-->

@@ -1,0 +1,34 @@
+{
+  "name": "Qurl",
+  "main": "qurl.js",
+  "version": "0.1.2",
+  "homepage": "https://github.com/ryanburnette/Qurl",
+  "authors": [
+    "Ryan Burnette <ryan.burnette@gmail.com>"
+  ],
+  "description": "A browser JavaScript library for getting and setting query parameters.",
+  "keywords": [
+    "query",
+    "parameters",
+    "javascript",
+    "browser"
+  ],
+  "license": "Apache2",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "_release": "0.1.2",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.1.2",
+    "commit": "3ec784e3b0f794d8b94bbb1e48fc910abdc3efd4"
+  },
+  "_source": "git://github.com/ryanburnette/Qurl.git",
+  "_target": "~0.1.2",
+  "_originalSource": "qurl",
+  "_direct": true
+}

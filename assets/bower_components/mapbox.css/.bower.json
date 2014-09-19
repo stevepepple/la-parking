@@ -1,0 +1,14 @@
+{
+  "name": "mapbox.css",
+  "_cacheHeaders": {
+    "ETag": "\"eef84456b043028dc4a9f7d6401fb7ff\"",
+    "Last-Modified": "Mon, 19 May 2014 15:05:09 GMT",
+    "Content-Length": "16110",
+    "Content-Type": "text/css"
+  },
+  "_release": "e-tag:eef84456b",
+  "main": "index.css",
+  "_source": "https://api.tiles.mapbox.com/mapbox.js/v1.6.3/mapbox.css",
+  "_target": "*",
+  "_originalSource": "https://api.tiles.mapbox.com/mapbox.js/v1.6.3/mapbox.css"
+}

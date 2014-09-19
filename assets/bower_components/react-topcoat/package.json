@@ -1,0 +1,40 @@
+{
+  "name": "react-topcoat",
+  "version": "0.1.4",
+  "author": {
+    "name": "Arne Martin Aurlien",
+    "email": "am@aurlien.net"
+  },
+  "description": "React components for topcoat elements",
+  "main": "./react-topcoat",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/arnemart/react-topcoat.git"
+  },
+  "keywords": [
+    "react",
+    "topcoat"
+  ],
+  "devDependencies": {
+    "watchify": "~0.6.1"
+  },
+  "dependencies": {
+    "topcoat": "~0.7.5",
+    "react": "~0.9.0"
+  },
+  "scripts": {
+    "watch": "watchify -vo test-built.js test.js"
+  },
+  "license": "MIT",
+  "readme": "react-topcoat\n=============\n\nA collection of [React][1] components for [Topcoat][2].\n\nSee test.js for sample usage.\n\nDemo\n----\n\nGo here: http://arnemart.github.io/react-topcoat/\n\nInstallation\n------------\n\n`npm install react-topcoat` or just download react-topcoat.js.\n\nLoading\n-------\n\nWith browserify: `var ReactTopcoat = require('react-topcoat');`\n\nWith AMD: `require(['react-topcoat'], function(ReactTopcoat) { // Do stuff })`\n\n…or just include in a script tag (after loading react.js first, of course).\n\n\n\n[1]: http://facebook.github.io/react/\n[2]: http://topcoat.io",
+  "readmeFilename": "Readme.md",
+  "bugs": {
+    "url": "https://github.com/arnemart/react-topcoat/issues"
+  },
+  "_id": "react-topcoat@0.1.4",
+  "dist": {
+    "shasum": "a8d175deb403cd398bcfeb39864bf0e7109ee6c2"
+  },
+  "_from": "react-topcoat@",
+  "_resolved": "https://registry.npmjs.org/react-topcoat/-/react-topcoat-0.1.4.tgz"
+}

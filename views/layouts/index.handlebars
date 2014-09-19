@@ -1,0 +1,57 @@
+<!doctype html>
+	<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+	<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+	<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+	<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>City-IQ</title>
+        <meta name="description" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+		
+        <!-- build:css(assets) styles/screen.css -->
+		<link rel="stylesheet" href="bower_components/semantic/build/packaged/css/semantic.css" type="text/css" media="screen" title="no title" charset="utf-8">
+		<link rel="stylesheet" href="bower_components/mapbox.js/theme/style.css" type="text/css" media="screen" title="no title" charset="utf-8">
+		<link rel="stylesheet" href="bower_components/topcoat/css/topcoat-desktop-light.css" type="text/css" media="screen" title="no title" charset="utf-8">
+		<link rel="stylesheet" href="styles/screen.less" type="text/less" media="screen" />
+		<link rel="stylesheet" href="styles/index.less" type="text/less" media="screen" />
+		
+		<script src="bower_components/jquery/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="bower_components/jQuery.serializeObject/jquery.serializeObject.js" type="text/javascript" charset="utf-8"></script>
+		<script src="bower_components/less.js/dist/less-1.7.0.js" type="text/javascript" charset="utf-8"></script>	
+		<script src="bower_components/underscore/underscore.js" type="text/javascript" charset="utf-8"></script>
+		<script src="bower_components/crossfilter/crossfilter.js" type="text/javascript" charset="utf-8"></script>
+		
+		<script src='https://api.tiles.mapbox.com/mapbox.js/v1.6.3/mapbox.js'></script>
+		<link href='https://api.tiles.mapbox.com/mapbox.js/v1.6.3/mapbox.css' rel='stylesheet' />
+		
+		<script src="bower_components/leaflet-ajax/dist/leaflet.ajax.js" type="text/javascript" charset="utf-8"></script>
+		
+        <!-- endbuild -->
+    </head>
+    <body>
+        <!--[if lt IE 10]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        {{{ body }}}
+
+        <!-- build:js(assets) scripts/scripts.js -->
+        <!-- endbuild -->
+
+		<script src="bower_components/backbone/backbone.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+        <script>
+            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+            e.src='//www.google-analytics.com/analytics.js';
+            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+            ga('create','UA-XXXXX-X');ga('send','pageview');
+        </script>
+
+    </body>
+</html>
