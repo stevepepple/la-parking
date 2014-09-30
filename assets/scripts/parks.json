@@ -1,0 +1,79 @@
+{
+    "parks": [
+		{
+			"name":		    "Willshire Vermont Station",
+			"address":		"643 S Vermont Ave, Los Angeles, CA 90005",
+			"coordinates":	[34.062385, -118.291942]	
+		},
+		{
+			"name":		    "North Hollywood Station",
+			"address":		"5420 Lankershim Blvd North Hollywood, CA 91601",
+			"coordinates":	[34.16916, -118.37676199999999]	
+		},
+		{
+			"name":		    "LA Convention Center",
+			"address":		"NA",
+			"coordinates":	[34.041680, -118.266740]	
+		},
+		{
+			"name":		    "Main / Chavez",
+			"address":		"801 Rosabell Street, Los Angeles, CA 90012, USA",
+			"coordinates":	[34.0596186, -118.2351744]	
+		},
+		{
+			"name":		    "Financial District",
+			"address":		"585-599 S Boylston St Los Angeles, CA 90017",
+			"coordinates":	[34.053460, -118.260045]	
+		},
+		{
+			"name":		    "Fashion District / Olympic Blvd.",
+			"address":		"250-298 W Olympic Blvd Los Angeles, CA 90015",
+			"coordinates":	[34.041410, -118.258406]	
+		},
+		{
+			"name":		    "Grand Central Market",
+			"address":		"399 W 3rd St Los Angeles, CA 90013",
+			"coordinates":	[34.051659, -118.248908]	
+		},
+		{
+			"name":		    "1st Street / Little Toyko",
+			"address":		"400-438 E 1st St Los Angeles, CA 90012",
+			"coordinates":	[34.049042, -118.238989]	
+		},
+		{
+			"name":		    "2nd Street / Little Toyko",
+			"address":		"200 E 2nd St Los Angeles, CA 90012",
+			"coordinates":	[34.050093, -118.243276]	
+		},
+		{
+			"name":		    "MacArthur Park Station",
+			"address":		"650-698 S Westlake Ave Los Angeles, CA 90057",
+			"coordinates":	[34.056729, -118.274968]	
+		},
+		{
+			"name":		    "23rd Street Station",
+			"address":		"490 W 23rd St Los Angeles, CA 90007",
+			"coordinates":	[34.029927, -118.272910]	
+		},
+		{
+			"name":		    "Mid-Wilshire",
+			"address":		"6101 Wilshire Blvd Los Angeles, CA 90048",
+			"coordinates":	[34.063391, -118.36168900000001]	
+		},
+		{
+			"name":		    "Pico Station",
+			"address":		"601 W Pico Blvd Los Angeles, CA 90015",
+			"coordinates":	[34.040301, -118.266907]	
+		},
+		{
+			"name":		    "Union Station",
+			"address":		"834-852 N Alameda St Los Angeles, CA 90012",
+			"coordinates":	[34.040301, -118.266907]	
+		},
+		{
+			"name":		    "West Hollywood / Vine",
+			"address":		"1698 Argyle Ave Los Angeles, CA 90028",
+			"coordinates":	[34.101472, -118.325027]	
+		}		
+	]
+}
