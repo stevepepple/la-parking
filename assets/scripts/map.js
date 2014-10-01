@@ -28,7 +28,7 @@ function init() {
 	    "box-sizing" : "border-box",
 	    "color": "#EEEEEE",
 	    "weight": 1.5,
-	    "opacity": 0.65,
+	    "opacity": 0.0,
 	};
 	
 	var latlng = L.latLng(34.056639, -118.237667);
