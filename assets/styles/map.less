@@ -2,3 +2,45 @@ div.container {
 	width: 100%;
 	height: 100%;
 }
+
+html, body {
+	height: 100%;
+	width: 100%;    
+}
+
+.kiosk-wrapper {
+	width: 100%;
+	display: inline-block;
+	position: relative;
+}
+
+.kiosk-wrapper:after {
+    padding-top: 185%; /*16:9 ratio*/
+    display: block;
+    content: '';
+}
+
+.kiosk {
+    position: absolute;
+    top: 0; bottom: 0; right: 0; left: 0; /*fill parent*/
+    background-color: #404543;
+    /*I wanted it to look good :)*/
+    font-family: 'Arial', Helvetica, Sans-Serif;
+    color: white;
+}
+
+#map {
+	height:40% !important;
+	width:80% !important;
+	margin-left:10%;
+}
+
+div.park_name {
+	font-size: 8vw;
+	padding:4%;
+
+}
+
+div.selectPark {
+	display:none;
+}
