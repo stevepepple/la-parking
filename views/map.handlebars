@@ -1,9 +1,33 @@
 <div class="container">
 		
-	<div id='map'></div>
+	<div class = "kiosk-wrapper">
+		<div class="kiosk">
+			
+			<div id='parks-list'></div>
+			
+			<script type="text/template" id="parks-list-template">
+				
+				<div class="current park_name"><%= parks[0].name %></div>
+				
+				<div class="selectPark">
+					<% _.each(parks, function(park){ %>
+						<li>
+							<span> <%= park.name %> </span> 
+						</li> 
+					<% }); %>
+				</div>
+								
+				
+			</script>
+			
+			
+			<div id='map'></div>
+		</div>
+	</div>
 
-	<div id='google_map'></div>
+	<div id='map-canvas'></div>
 </div>
 
 <script src="scripts/app.js" type="text/javascript" charset="utf-8"></script>
 <script src="scripts/map.js" type="text/javascript" charset="utf-8"></script>
+<script src="scripts/util.js" type="text/javascript" charset="utf-8"></script>
