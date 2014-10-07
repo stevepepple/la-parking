@@ -1,0 +1,12 @@
+{
+  "name": "la-parking",
+  "version": "0.0.0",
+  "dependencies": {
+    "modernizr": "~2.6.2",
+    "semantic-grid": "*",
+    "semantic": "~0.15.2",
+    "mapbox.css": "https://api.tiles.mapbox.com/mapbox.js/v1.6.3/mapbox.css",
+    "mapbox.js": "~1.6.3"
+  },
+  "devDependencies": {}
+}
