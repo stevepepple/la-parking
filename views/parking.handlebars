@@ -1,6 +1,26 @@
 <div class="container">
 		
 	<!-- Parking View Goes Here -->
+	<div id='parks-list'></div>
+	<script type="text/template" id="parks-list-template">
+		
+		<div id="current">
+			<div class="select_park"></div>
+			<div class="select_park_list">
+				<% _.each(parks, function(park){ %>
+					<li>
+						<span><%= park.name %></span> 
+					</li> 
+				<% }); %>
+				
+			</div>
+			
+			<div class="park_name"><%= App.current.name %></div>
+		</div>
+		<div class="directions"></div>
+		
+	</script>
+	
 	
 	<script type="text/template" id="car-park-template">
 		<div>
