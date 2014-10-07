@@ -4,24 +4,46 @@
 		<div class="kiosk">
 			
 			<div id='parks-list'></div>
+			<div id='directions'></div>
 			
 			<script type="text/template" id="parks-list-template">
 				
-				<div class="current park_name"><%= parks[0].name %></div>
-				
-				<div class="selectPark">
-					<% _.each(parks, function(park){ %>
-						<li>
-							<span> <%= park.name %> </span> 
-						</li> 
-					<% }); %>
+				<div id="current">
+					<div class="select_park"></div>
+					<div class="select_park_list">
+						<% _.each(parks, function(park){ %>
+							<li>
+								<span><%= park.name %></span> 
+							</li> 
+						<% }); %>
+						
+					</div>
+					
+					<div class="park_name"><%= App.current.name %></div>
 				</div>
-								
+				<div class="directions"></div>
 				
 			</script>
-			
+
+			<script type="text/template" id="directions-template">
+				<%	_.each(directions, function(value, index) { %>
+					<%	if(value.length > 0) { %>
+					<div class="<%= index %>">
+						<div class="icon <%= index %>"></div>
+						<% for (var i = 0; i < value.length; i++) { %>
+							<%= value[i] %>
+						<% } %>
+					</div>
+					<%	} %>
+					
+				<% }); %>
+			</script>
+				
 			
 			<div id='map'></div>
+			
+			<div id='overview_map'></div>
+			<div id='qr_code'></div>
 		</div>
 	</div>
 
