@@ -1,8 +1,15 @@
-# node-js-getting-started
+# Wayfinding Kiosk
 
-A barebones Node.js app using [Express 4](http://expressjs.com/).
+This is one part of my idea for transforming parking lots into a place for wayfinding, city information, and access to public transportation. 
 
-This application support the [Getting Started with Node on Heroku](https://devcenter.heroku.com/articles/getting-started-with-nodejs) article - check it out.
+This project was created for Ford's Parking Lot 2.0 challenge. 
+
+
+## Map
+
+I created the visual style for this map using Mapbox and Mapbox Studio. 
+
+
 
 ## Running Locally
 
@@ -17,13 +24,6 @@ $ npm start
 
 Your app should now be running on [localhost:5000](http://localhost:5000/).
 
-## Deploying to Heroku
-
-```
-$ heroku create
-$ git push heroku master
-$ heroku open
-```
 
 ## Documentation
 
