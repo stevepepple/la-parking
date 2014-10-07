@@ -8,6 +8,49 @@ String.prototype.toTitleCase = function () {
   	return string;
 }
 
+
+/* 0-180 Degree Radials to North, South, East, West */
+if (typeof(Number.prototype.heading_to_direction) === "undefined") {
+  Number.prototype.heading_to_direction = function() {
+
+	var direction = "";
+	
+	if (this < 0 && this > -90) {
+		direction = "north-west";
+	} 
+	
+	if (this > -180 && this <= -90) {
+		direction = "south-west";
+	}
+	
+	if (this > 0 && this <= 90) {
+		direction = "north-east";
+	}
+	
+	if (this > 90 && this <= 180) {
+		direction = "north-east";
+	}
+
+	if (this <= 20 && this >= -20) {
+		direction = "north"
+	}
+	
+	if (this <= 70 && this <= 110) {
+		direction = "east"
+	}
+	
+	if (this <= 160 && this <= -160) {
+		direction = "south"
+	}
+	
+	if (this <= -70 && this >= -110) {
+		direction = "west"
+	}
+
+    return direction;
+  }
+}
+
 /* Meters to Miles */
 if (typeof(Number.prototype.toMiles) === "undefined") {
   Number.prototype.toMiles = function() {
@@ -20,6 +63,22 @@ if (typeof(Number.prototype.toMeters) === "undefined") {
   Number.prototype.toMeters = function() {
     return this * 1609.34;
   }
+}
+
+// Take the following string
+String.prototype.removeDuplicates = function() {
+	var string = this;
+	var arr = string.split(" ");
+	var unique = [];
+
+	$.each(arr, function (index,word) {
+	    if ($.inArray(word, unique) === -1) 
+	        unique.push(word);
+
+	});
+	
+	unique = unique.join(" ")
+	return unique;
 }
 
 
