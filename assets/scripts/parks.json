@@ -1,13 +1,13 @@
 [
 		{
-			"name":		    "Willshire Vermont Station",
-			"address":		"643 S Vermont Ave, Los Angeles, CA 90005",
-			"coordinates":	[34.062385, -118.291942]	
-		},
-		{
 			"name":		    "North Hollywood Station",
 			"address":		"5420 Lankershim Blvd North Hollywood, CA 91601",
 			"coordinates":	[34.16916, -118.37676199999999]	
+		},
+		{
+			"name":		    "Willshire Vermont Station",
+			"address":		"643 S Vermont Ave, Los Angeles, CA 90005",
+			"coordinates":	[34.062385, -118.291942]	
 		},
 		{
 			"name":		    "LA Convention Center",
@@ -20,12 +20,12 @@
 			"coordinates":	[34.0596186, -118.2351744]	
 		},
 		{
-			"name":		    "Financial District",
+			"name":		    "Financial Dist.",
 			"address":		"585-599 S Boylston St Los Angeles, CA 90017",
 			"coordinates":	[34.053460, -118.260045]	
 		},
 		{
-			"name":		    "Fashion District / Olympic Blvd.",
+			"name":		    "Fashion Dist. / Olympic Blvd.",
 			"address":		"250-298 W Olympic Blvd Los Angeles, CA 90015",
 			"coordinates":	[34.041410, -118.258406]	
 		},
