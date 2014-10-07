@@ -3,7 +3,7 @@ var currentFeatures = [];
 var currentLabels = [];
 
 $(function() {
-	App.scope = "nation";
+	App.current = "";
 	App.places = {};
 	App.colors = [];
 	App.children = [];
@@ -23,22 +23,16 @@ $(function() {
 	   url: '/scripts/parks.json'
 	});
 	
-	parks_list = new App.ParksList();
-	
-	parks_list.fetch({
-        success: function () {
-			/* TODO: Make the list */
-			initParking();
-		}
-	});
-	
+	/* TODO: include override for select Park */
 	App.ParksUI = Backbone.View.extend({
 		
 		el: '#parks-list',
 	
 		template: _.template($("#parks-list-template").html()),
 	
-		events: { },
+		events: {
+			'click .select_park': 'selectPark',
+		},
 
 		// It's the first function called when this view it's instantiated.
 		initialize: function(options){
@@ -52,13 +46,49 @@ $(function() {
 		},
 	
 		render: function(){
-
-			//$(this.el).html(this.template({ placeholder: 'City, Neighborhood, Zip Code' }));
 			 this.$el.html(this.template({ parks: parks_list.toJSON()}));
 			 return this;
+		},
+		
+		selectPark: function(e) {
+			var list = $(".select_park_list");
+
+	 		list.show();
+	 		list.find("li").bind("click", function(e){
+	 			var text = $(this).find("span").text();
+				
+	 			park = _.findWhere(parks_list.toJSON(), { 'name' : text.toString() });
+	 			App.current = park;
+				var lat = App.current.coordinates[0];
+				var lng = App.current.coordinates[1];
+	 			var lat_lng = L.latLng(lat, lng);
+				
+				var query = $.query.set("lat", lat).set("lng", lng);
+				
+				/* Update the URL and the Bar Codee */
+				window.history.pushState('location', App.current.name, '/map'  + query);
+				
+	 			getPlace(lat_lng);
+				
+				App.qrcode.makeCode(window.location.href);
+		
+
+	 		});
 		}
+		
 	});
 
+	App.PrintedDirections = Backbone.Model.extend({
+		defaults: { 
+			north : [], 
+			east :[], 
+			south : [], 
+			west : []
+		}
+	});
+	
+	printed_directions = new App.PrintedDirections();
+	
 	App.CurrentPlace = Backbone.Model.extend({
 		initialize: function(){		
 
@@ -75,7 +105,6 @@ $(function() {
 		}
 	});
 	
-	
 	Result = Backbone.Model.extend({
 		initialize: function(){
 			// intialized
@@ -89,14 +118,24 @@ $(function() {
 });
 
 function initParking() {
-	
+		
 	parks_ui = new App.ParksUI()
 	
 	var list = parks_list.toJSON();
-	console.log("list", list);
 	
-}
+	App.current = list[0];
+	var lat_lng = L.latLng(App.current.coordinates[0], App.current.coordinates[1]);
+	getPlace(lat_lng);	
+	
+	App.qrcode = new QRCode(document.getElementById("qr_code"), {
+	    text: window.location.href,
+	    width: 200,
+	    height: 200,
+	    colorDark : "#C1C2C2",
+	    colorLight : "#535755"
+	});
 
+}
 
 function getPlace(location) {
 	map.setView(location, 16);
@@ -115,10 +154,9 @@ function getPlace(location) {
 	
 	var bounds = walk_range.getBounds()
 	map.fitBounds(bounds)
-	
+	parks_ui.render();
 	
 	/* TODO: put 5 minute marker here; Use north and lat center position?  */
-	console.log("circle and it's bounds", walk_range, bounds)
 	console.log(bounds.getNorthWest())
 	
 	var key = "AIzaSyA-YiurRX6GixuExPSrQgbcOwcUWinAn54";
@@ -137,33 +175,50 @@ function getPlace(location) {
 	service.nearbySearch(request, function(results, status){
 		
 		var used_types = [];
+		var printed_places = { north : [], east :[], south : [], west : []}
 		
 		for (var i = 0; i < results.length; i++) {
 			var place = results[i];
+			//console.log("google place", place)
 			
-			//console.log(place.name, place.types, place.place_id);
-			
+			/* TODO: Get details for every place? */
 			for (var j = 0; j < place.types.length; j++) {
 				var type = place.types[j];
 				
 				if (type == "train_station" || type == "airport" || type == "bus_station") {
 				
-					var request = {
-					 	placeId: place.place_id
-					};
+					var request = { placeId: place.place_id };
 					
 					service.getDetails(request, showDetails)
 				};
 				
-			};
-			
-			var type = place.types[0];
-			
+			}; 
+						
 			var lat = place.geometry.location.lat();
 			var lng = place.geometry.location.lng();
 			
-			/* For now, only show one of each type */
+			var type = place.types[0];
+			var path = [coord, place.geometry]
+			
+			var heading = google.maps.geometry.spherical.computeHeading(coord, place.geometry.location);
+			var direction = heading.heading_to_direction();
+			
+			if (direction == "north" || direction == "east" || direction == "south" || direction == "west") {
+				// TODO: Show one (at most two) things for each matching place. 
+			}
+			
+			/* Show up to 2 places in each direction */
+			if (direction == "north" || direction == "east" || direction == "south" || direction == "west") {
+				if (printed_places[direction].length < 2 && place.name !== printed_places[direction][0]) {
+					var name = place.name.removeDuplicates();
+					printed_places[direction].push(place.name.removeDuplicates())
+					
+					console.log("simplified name ", name, printed_places)
 
+				}
+			}
+			
+			/* For now, only show one of each type */
 			if (used_types.indexOf(type) == -1) {
 				var icon = L.icon({
 				    iconUrl: 'images/icons/' + place.types[0] + '.png',
@@ -173,23 +228,13 @@ function getPlace(location) {
 				L.marker([lat, lng], { icon: icon }).addTo(map);
 				
 				used_types.push(type);
+								
 			}
-
-
-			/*
-			L.marker([lat, lng], {
-			    
-				icon: L.mapbox.marker.icon({
-			        'marker-size': 'large',
-			        'marker-symbol': place.types[0],
-			        'marker-color': '#fa0'
-				})
-			}).addTo(map);
-			*/
-			
-			
-			//createMarker(results[i]);
 		}
+		
+		printed_directions.set(printed_places);
+		directions_ui = new App.DirectionsUI();
+		
 		
 	});
 	
@@ -198,7 +243,7 @@ function getPlace(location) {
 
 function showDetails(place, status) {
 	if (status == google.maps.places.PlacesServiceStatus.OK) {
-		//console.log("place details: ", place)
+		console.log("place details: ", place)
 	}
 }
 
