@@ -35,12 +35,97 @@ html, body {
 	margin-left:10%;
 }
 
+#overview_map {
+	background: #555555;
+	float:left;
+	height:24%;
+	width:46%;
+	margin-left: 10%;
+	margin-top: 6%;
+}
+
+#qr_code {
+	float:left;
+	margin-left: 5vw;
+	margin-top:  6vw;
+}
+
 div.park_name {
-	font-size: 8vw;
+	font-size: 7vw;
 	padding:4%;
-
 }
 
-div.selectPark {
-	display:none;
+div.select_park {
+	background: url("/images/icons/switch.png") no-repeat;
+	background-position: center center;
+	background-size: 70% auto;
+	height:6vw;
+	width:6vw;
+	float:right;
+	border-radius: 0.5vw;
+	border: 1px solid #979797;
+	-moz-box-shadow:  inset 0px -0.5vw 0px 0px #4A4A4A;
+	box-shadow:       inset 0px -0.5vw 0px 0px #4A4A4A;
+	margin-top: 4vw;
+	margin-right: 2vw;
 }
+
+.select_park_list {
+	display:none;		
+	background: #535755;
+	-moz-box-shadow:  inset 0px -0.5vw 0px 0px #4A4A4A;
+	box-shadow:       inset 0px -0.5vw 0px 0px #4A4A4A;
+	position: absolute;
+	top: 12vw;
+	right:1vw;
+	z-index:100;
+}
+
+
+li {
+	font-size: 3vw;
+	line-height:4vw;
+	border-bottom: solid .1vw #C1C2C2;
+	list-style:none;
+}
+
+#directions > div {
+	font-size: 4vw;
+	padding: 2%;
+	padding-left: 4vw;
+	height:6vw;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+#directions div.icon {
+	float:left;
+	height: 5vw;
+	width: 5vw; 
+	margin-right: 3vw;
+	background: url("/images/icons/north.png") no-repeat;
+	background-position: center center;
+	background-size: 100% auto;
+}
+
+#directions div.icon.east {
+	background: url("/images/icons/east.png");
+	background-position: center center;
+	background-size: 100% auto;
+}
+
+#directions div.icon.south {
+	background: url("/images/icons/south.png");
+	background-position: center center;
+	background-size: 100% auto;
+}
+
+#directions div.icon.west {
+	background: url("/images/icons/west.png");
+	background-position: center center;
+	background-size: 100% auto;
+}
+
+
+
