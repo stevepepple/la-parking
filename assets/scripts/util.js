@@ -17,7 +17,12 @@ if (typeof(Number.prototype.heading_to_direction) === "undefined") {
 	
 	if (this < 0 && this > -90) {
 		direction = "north-west";
-	} 
+	}
+	
+	if (this <= 70 && this <= 110) {
+		direction = "east"
+	}
+	 
 	
 	if (this > -180 && this <= -90) {
 		direction = "south-west";
@@ -33,10 +38,6 @@ if (typeof(Number.prototype.heading_to_direction) === "undefined") {
 
 	if (this <= 20 && this >= -20) {
 		direction = "north"
-	}
-	
-	if (this <= 70 && this <= 110) {
-		direction = "east"
 	}
 	
 	if (this <= 160 && this <= -160) {
@@ -77,7 +78,6 @@ String.prototype.removeDuplicates = function() {
 
 	});
 	
-	unique = unique.join(" ")
 	return unique;
 }
 
