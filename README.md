@@ -17,18 +17,20 @@ The parking page uses the ParkWhiz developer API to show the current availabilit
 
 The API has provides information about the amenties at the current lot. 
 
-attended, valet - Has on-site parking attendant
-bus - There is nearby bus service (added by me, as I've only selected parking lots near public transit)
-eticket - Accepts mobile payment
-handicap - Includes handicap accessible spaces
-indoor - Indoor or covered parking
-shuttle - Has a shuttle service
-reservation - Accpets reservations
-restroom - Has restrooms
-reentry_allowed - Allows re-entry
-security - Has on-site security
 
----- 
+| Icon            | Description                                                                                       |
+|-----------------|---------------------------------------------------------------------------------------------------|
+| attended        | Has on-site parking attendant or valet                                                            |
+| bus             | There is nearby bus service (added by me, as I've only selected parking lots near public transit) |
+| eticket         | Accepts mobile payment                                                                            |
+| handicap        | Includes handicap accessible spaces                                                               |
+| indoor          | Indoor or covered parking                                                                         |
+| reentry_allowed | Allows re-entry to the parking structure                                                          |
+| reservation     | Accpets reservations                                                                              |
+| restroom        | Has restrooms                                                                                     |
+| security        | Has on-site security                                                                              |
+| shuttle         | Has a shuttle service                                                                             |
+
 
 ## Running Locally
 
