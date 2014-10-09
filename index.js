@@ -1,6 +1,6 @@
 var express = require('express')
 var app = express();
-var router = express.Router(); 	
+var router = express.Router(); 
 
 var cool = require('cool-ascii-faces');
 
@@ -8,13 +8,15 @@ app.use(express.logger('dev'));
 
 app.set('port', (process.env.PORT || 5000))
 app.use(express.static(__dirname + '/public'))
-
 app.use(express.static(__dirname + '/assets'));
 
 /*
  * Use Handlebars for templating
  */
 var exphbs = require('express3-handlebars');
+var markdown = require( "markdown" ).markdown;
+var fs = require('fs');
+//var md2html = require( "md2html" );
 var hbs;
 
 /*
@@ -56,7 +58,25 @@ if (process.env.NODE_ENV === 'production') {
 app.set('view engine', 'handlebars');
 
 app.get('/', function(request, response) {
-  response.send(cool());
+
+	function readModuleFile(path, callback) {
+	    try {
+	        var filename = require.resolve(path);
+	        fs.readFile(filename, 'utf8', callback);
+	    } catch (e) {
+	        callback(e);
+	    }
+	}
+
+	readModuleFile('./README.md', function (err, string) {
+	    console.log(err, string);
+		
+	  	response.send( markdown.toHTML( string ) );
+		
+	});	
+	//console.log(md2html)
+  	//response.send( markdown.toHTML( "Hello *World*!" ) );
+	//response.sendfile( markdown.toHTML("README.md") );
 });
 
 app.get('/map', function(request, response, next) {
