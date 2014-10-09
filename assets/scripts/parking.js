@@ -75,9 +75,32 @@ $(document).ready(function() {
 	
 	parks = ["W Cesar E Chavez Ave, Los Angeles"]
 	
-	getAvailablity(null, parks[0])
+	
+	parks_list = new App.ParksList();
+	
+	parks_list.fetch({
+        success: function () {
+			/* TODO: Make the list */
+			initParking(prepareList);
+		}
+	});
+	
+	
+	//getAvailablity(null, parks_list[0])
 				
 });
+
+
+function prepareList(place){
+	parks_ui.render();
+	
+	//getAvailablity(null, location);
+	
+	console.log("default location ", parks_list[1]);
+	console.log("new location ", place);
+	
+	getAvailablity(null, App.current)
+};
 
 /* https://www.parkwhiz.com/developers/search/ */
 
@@ -91,17 +114,19 @@ function getAvailablity(location, destination) {
 
 	var new_url = url + "?" + "key=" + key + "&sort=distance";
 
-	console.log(location, destination)
 	if (location !== null) {
 		// user the lat and lng; 
 	} else {
-		new_url += "&destination=" + destination + "&callback=?"
-		console.log(new_url)
+		new_url += "&destination=" + destination.address + "&lat=" + destination.coordinates[0] + "&lng=" + destination.coordinates[1] + "&callback=?"
 	}
 	
 	$.getJSON(new_url, function(data) {
 
-		console.log("response", data)
+		if (data.parking_listings !== undefined) {
+			var closest = data.parking_listings[0];
+			best.set(closest);
+		}
+		
 
 	});
 	
