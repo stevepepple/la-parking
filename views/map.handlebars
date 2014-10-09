@@ -20,10 +20,13 @@
 					</div>
 					
 					<div class="park_name"><%= App.current.name %></div>
+					<div class="park_address shorten"><%= App.current.address %></div>
 				</div>
-				<div class="directions"></div>
+				<hr/>
 				
 			</script>
+			
+			<div class="directions"></div>
 
 			<script type="text/template" id="directions-template">
 				<%	_.each(directions, function(value, index) { %>
@@ -31,7 +34,14 @@
 					<div class="<%= index %>">
 						<div class="icon <%= index %>"></div>
 						<% for (var i = 0; i < value.length; i++) { %>
-							<%= value[i] %>
+							<% if (i == 0 && value.length > 1){ %>
+								 <%= value[i] %>, 
+							<% } else if (value.length == 1) { %>
+								 <%= value[i] %> 
+							<% } else { %>
+								</br> <%= value[i] %> 
+							<% } %>
+
 						<% } %>
 					</div>
 					<%	} %>

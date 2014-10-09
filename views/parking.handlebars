@@ -2,6 +2,8 @@
 		
 	<!-- Parking View Goes Here -->
 	<div id='parks-list'></div>
+	<hr/>
+	
 	<script type="text/template" id="parks-list-template">
 		
 		<div id="current">
@@ -16,42 +18,50 @@
 			</div>
 			
 			<div class="park_name"><%= App.current.name %></div>
-		</div>
-		<div class="directions"></div>
-		
-	</script>
-	
-	
-	<script type="text/template" id="car-park-template">
-		<div>
-				<h1><%= item.location_name %></h1>
+			<div class="park_address shorten"><%= App.current.address %></div>
 			
-			
-				<% console.log("from template...", item) %>
-				
-				<div class="availablity">
-					<%= item.available_spots %> Free Spaces
-				</div>
-				
-				<div class="price">
-					 <%= item.price_formatted %> per hour
-				</div>
 		</div>
 		
-		<div class="amenities">	
-				
-			<% _.each(getAmenities(item), function(amenity){ %>
-
-				<%= amenity %>
-				
-			<% }); %>
-
-		</div>
-				
 	</script>
 	
 	<div id="car-park"><!-- template --></div>
+	<hr/>
 	
+	<script type="text/template" id="car-park-template">
+		<div>
+			<div class="availablity">
+				<% if (item.available_spots > 0) { %>
+					<span class="available">Available</span>
+				<% } else { %>
+					<span class="not_available">No Parking </span>
+				<% } %>
+				<div class="company shorten"><%= item.location_name %></div>
+			</div>
+			
+			<div class="amenities">	
+				<div class="bus icon"></div>
+			
+				<% _.each(getAmenities(item), function(amenity){ %>
+
+					<div class="<%= amenity %> icon"></div>
+					<%= amenity %>
+			
+				<% }); %>
+
+			</div>
+
+			<div class="availablity_details">
+				<div class="space"><%= item.available_spots %></div> <span>Free Spaces</span>
+			</div>
+			
+			<div class="price_details">
+				 <div class="price"><%= item.price_formatted %></div> <span>Per Hour</span>
+			</div>
+		</div>
+				
+	</script>
+
+	<div id="qr_code"><!-- QR TEMPLATE --></div>
 
 </div>
 
