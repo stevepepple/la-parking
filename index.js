@@ -1,14 +1,14 @@
-var express = require('express')
+var express = require('express');
+var morgan = require('morgan')
 var app = express();
 var router = express.Router(); 
 
-var cool = require('cool-ascii-faces');
-
-app.use(express.logger('dev'));
+app.use(morgan('combined'));
 
 app.set('port', (process.env.PORT || 5000))
 app.use(express.static(__dirname + '/public'))
 app.use(express.static(__dirname + '/assets'));
+
 
 /*
  * Use Handlebars for templating
@@ -58,7 +58,7 @@ if (process.env.NODE_ENV === 'production') {
 app.set('view engine', 'handlebars');
 
 app.get('/', function(request, response) {
-
+	
 	function readModuleFile(path, callback) {
 	    try {
 	        var filename = require.resolve(path);
@@ -69,11 +69,13 @@ app.get('/', function(request, response) {
 	}
 
 	readModuleFile('./README.md', function (err, string) {
-	    console.log(err, string);
+	    console.log( "Converting Read Me" );
 		
-	  	response.send( markdown.toHTML( string ) );
+		var html = "<html><head><title>My Notes</title><link href='style.css' rel='stylesheet'></head><body>" + markdown.toHTML(string) + "</body>";
+		response.send( html );
 		
-	});	
+	});
+	
 	//console.log(md2html)
   	//response.send( markdown.toHTML( "Hello *World*!" ) );
 	//response.sendfile( markdown.toHTML("README.md") );
