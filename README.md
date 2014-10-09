@@ -9,7 +9,26 @@ This project was created for Ford's Parking Lot 2.0 challenge.
 
 I created the visual style for this map using Mapbox and Mapbox Studio. 
 
+ - The data for rail and bus maps is from [L.A. Metro Developer](http://developer.metro.net/introduction/gis-data/download-gis-data/)
 
+## Parking
+
+The parking page uses the ParkWhiz developer API to show the current availability of parking at the nearest location. 
+
+The API has provides information about the amenties at the current lot. 
+
+attended, valet - Has on-site parking attendant
+bus - There is nearby bus service (added by me, as I've only selected parking lots near public transit)
+eticket - Accepts mobile payment
+handicap - Includes handicap accessible spaces
+indoor - Indoor or covered parking
+shuttle - Has a shuttle service
+reservation - Accpets reservations
+restroom - Has restrooms
+reentry_allowed - Allows re-entry
+security - Has on-site security
+
+---- 
 
 ## Running Locally
 
@@ -23,7 +42,6 @@ $ npm start
 ```
 
 Your app should now be running on [localhost:5000](http://localhost:5000/).
-
 
 ## Documentation
 
