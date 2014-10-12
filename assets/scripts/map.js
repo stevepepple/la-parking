@@ -95,8 +95,17 @@ function getPlace(location) {
 	var featureLayer = L.mapbox.featureLayer()
 	
 	setTimeout(function(){
-		map.setView(location, 17);
-		overview_map.setView(location, 12);
+		
+		if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+		 // some code..
+			map.setView(location, 16);
+			overview_map.setView(location, 10);
+
+		} else {
+			map.setView(location, 17);
+			overview_map.setView(location, 12);
+		}
+		
 	}, 200);
 	
 	var icon = L.icon({
@@ -220,7 +229,11 @@ function getPlace(location) {
 			    iconSize:     ['36', '36'], // size of the icon
 			});
 
-			L.marker([lat, lng], { icon: icon }).addTo(map);
+			var marker = L.marker([lat, lng], { icon: icon });
+			console.log(marker)
+			//marker.feature.properties.title = 'Capital Pride Parade'
+			marker.bindPopup(place.name);
+			marker.addTo(featureLayer)
 		}
 	}
 	
@@ -251,7 +264,7 @@ function getPlace(location) {
 				    iconSize:     [28, 28], // size of the icon
 				});
 
-				L.marker([lat, lng], { icon: icon }).addTo(map);
+				L.marker([lat, lng], { icon: icon }).addTo(featureLayer);
 				
 			}
 		}
@@ -261,6 +274,28 @@ function getPlace(location) {
 	//https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670522,151.1957362&radius=500&types=food&name=cruise&key=
 }
 
+function showParking() {
+	var parks = parks_list.toJSON();
+	var featureLayer = L.mapbox.featureLayer()
+	
+	_.each(parks, function(park, index) {
+		clearFeatures();
+		
+		console.log(park);
+		
+		var icon = L.icon({
+		    iconUrl: 'images/icons/parking.png',
+		    iconSize: [40, 40], // size of the icon
+		});
+		
+		L.marker([park.coordinates[0], park.coordinates[1]], { icon: icon, zIndexOffset: 250 }).addTo(featureLayer);
+	
+	});
+	
+	featureLayer.addTo(map);
+	map.fitBounds(featureLayer.getBounds());
+	
+}
 
 
 function setMapSize() {

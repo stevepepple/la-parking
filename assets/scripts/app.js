@@ -145,8 +145,8 @@ function initParking(callback) {
 	    text: window.location.href,
 	    width: 200,
 	    height: 200,
-	    colorDark : "#C1C2C2",
-	    colorLight : "#535755",
+	    colorDark : "#F1AA45",
+	    colorLight : "#404443",
 		correctLevel : QRCode.CorrectLevel.M
 	});
 }
