@@ -36,6 +36,27 @@ html, body {
 	margin-top: 3vw;
 }
 
+/* Override popup style */
+.leaflet-popup-content {
+	background: none repeat scroll 0 0 #555;
+	color: #fff;
+	font-size: 1.6vw;
+	width: 226px;
+}
+
+.leaflet-popup-content-wrapper, .map-legends, .map-tooltip {
+    background: none repeat scroll 0 0 #999 !important;
+}
+
+.leaflet-popup-tip {
+    border-top: 10px solid #555 !important;
+}
+
+.leaflet-popup-close-button {
+    -webkit-filter: invert(100%);
+	filter: invert(100%);
+}
+
 #overview_map {
 	background: #555555;
 	float:left;
@@ -90,6 +111,10 @@ html, body {
 	background-position: center center;
 	background-size: 100% auto;
 }
+
+
+
+
 
 
 

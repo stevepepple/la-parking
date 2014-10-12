@@ -1,5 +1,6 @@
 @import 'reset.css';
 @import 'grid.less';
+@import 'mobile.less';
 @import 'map.less';
 @import 'parking.less';
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400,600,300,700);
@@ -21,6 +22,12 @@ body {
 	font-family: 'Open Sans', "Helvetica Neue", helvetica, "Source Sans", arial,sans-serif !important;
 	min-height: 100%; /* real browsers */
 }
+
+*::-moz-selection {
+    background: none repeat scroll 0 0 #111 !important;
+    color: white;
+}
+
 
 /*------------------------------------*\
     $OVERRIDES
