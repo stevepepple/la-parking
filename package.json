@@ -11,7 +11,7 @@
     "express-handlebars": "*",
     "express-logger": "0.0.3",
     "express3-handlebars": "*",
-    "markdown": "*",
+    "marked": "^0.3.2",
     "morgan": "*"
   },
   "engines": {

@@ -14,7 +14,8 @@ app.use(express.static(__dirname + '/assets'));
  * Use Handlebars for templating
  */
 var exphbs = require('express3-handlebars');
-var markdown = require( "markdown" ).markdown;
+var marked = require('marked');
+
 var fs = require('fs');
 //var md2html = require( "md2html" );
 var hbs;
@@ -70,15 +71,16 @@ app.get('/', function(request, response) {
 
 	readModuleFile('./README.md', function (err, string) {
 	    console.log( "Converting Read Me" );
+		var header = 	'<meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Wayfinding Map</title><meta name="description" content=""><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">' + 
+						'<link rel="stylesheet" href="styles/index.less" type="text/less" media="screen"/>' + 
+						'<script src="bower_components/less.js/dist/less-1.7.0.js" type="text/javascript" charset="utf-8"></script>';
+					
+		var html = "<html><head>" + header + "</head><body><article class='markdown-body'>" + marked(string) + "</article></body>";
 		
-		var html = "<html><head><title>My Notes</title><link href='style.css' rel='stylesheet'></head><body>" + markdown.toHTML(string) + "</body>";
 		response.send( html );
 		
 	});
 	
-	//console.log(md2html)
-  	//response.send( markdown.toHTML( "Hello *World*!" ) );
-	//response.sendfile( markdown.toHTML("README.md") );
 });
 
 app.get('/map', function(request, response, next) {
