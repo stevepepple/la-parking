@@ -64,8 +64,7 @@ function init() {
 		attributionControl: false,
 		maxZoom: 18,
 		minZoom: 6,
-		zoomControl: false,
-		scrollWheelZoom: false
+		zoomControl: false
 	});
 	
 	overview_map = L.mapbox.map('overview_map', mapMain, {
@@ -108,14 +107,24 @@ function getPlace(location) {
 		
 	}, 200);
 	
-	var icon = L.icon({
-	    iconUrl: 'images/icons/you.png',
-	    iconSize: [80, 48], // size of the icon
-	});
+ 	var icon = L.icon({
+ 	    iconUrl: 'images/icons/you.png',
+ 	    iconSize: [80, 48], // size of the icon
+ 	});
+	
+	var overview_icon = L.icon({ iconUrl: 'images/icons/you.png', iconSize: [60, 36], });	
+	
+
+	if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+
+	 	var icon = L.icon({
+	 	    iconUrl: 'images/icons/parking.png',
+	 	    iconSize: [38, 38], // size of the icon
+	 	});
+	}
 	
 	L.marker([location.lat, location.lng], { icon: icon, zIndexOffset: 250 }).addTo(featureLayer);
 	
-	var overview_icon = L.icon({ iconUrl: 'images/icons/you.png', iconSize: [60, 36], });	
 	L.marker([location.lat, location.lng], { icon: overview_icon, zIndexOffset: 250 }).addTo(overview_map);
 	
 	var distance = 0.25; // miles
