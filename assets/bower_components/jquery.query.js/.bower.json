@@ -1,0 +1,21 @@
+{
+  "name": "jquery.query.js",
+  "version": "2.1.7",
+  "main": "jquery.query.js",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "components"
+  ],
+  "homepage": "https://github.com/plasticine/jquery.query.js",
+  "_release": "2.1.7",
+  "_resolution": {
+    "type": "version",
+    "tag": "2.1.7",
+    "commit": "db7b2d2ee1f204433f97d585a1e23b7ff1e4eb5c"
+  },
+  "_source": "git://github.com/plasticine/jquery.query.js.git",
+  "_target": "~2.1.7",
+  "_originalSource": "jquery.query.js",
+  "_direct": true
+}
