@@ -3,12 +3,22 @@
 and (min-device-width : 320px) 
 and (max-device-width : 568px) {
 	/* Styles */
-
+	#parks-list {
+	    padding-bottom: none;
+	}
+	
 	#map {
 		height:80% !important;
 		width:100% !important;
 		margin-left:0px;
-		margin-top: 0px;
+		margin-top: 0px !important;
+		-webkit-box-shadow: inset 4px 4px 4px -2px rgba(0,0,0,0.75);
+		-moz-box-shadow: inset 4px 4px 4px -2px rgba(0,0,0,0.75);
+		box-shadow: inset 4px 4px 4px -2px rgba(0,0,0,0.75);
+	}
+	
+	hr {
+		height:0px !important;
 	}
 	
 	#directions, #overview_map {
