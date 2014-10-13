@@ -62,11 +62,8 @@ $(document).ready(function() {
 		render: function() {
 
 			var item = best.toJSON();
-			
-			console.log("rendering parking info.")
-			console.log("current park", item)
 
-			this.$el.html(this.template({ item }));
+			this.$el.html(this.template({ item : item }));
 	
 		}
 	});
