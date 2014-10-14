@@ -69,7 +69,6 @@ The API has provides information about the amenties at the current lot.
 	</tbody>
 </table>
 
-
 ## Running Locally
 
 Make sure you have [Node.js](http://nodejs.org/) and the [Heroku Toolbelt](https://toolbelt.heroku.com/) installed.
