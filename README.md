@@ -7,16 +7,17 @@ This project was created for Ford's Parking Lot 2.0 challenge.
 
 ## Map
 
-I created the visual style for this map using Mapbox and Mapbox Studio. 
+###[Dynamic wayfinding map](http://la-parking.herokuapp.com/map) 
 
- - The data for rail and bus maps is from [L.A. Metro Developer](http://developer.metro.net/introduction/gis-data/download-gis-data/)
+The wayfinding map displays the user current location in relation to the nearby surroundings. I created the visual design of the scalable map using Mapbox Studio. This map will actually work for any major city in the United States. I then added several transit layers using the L.A. county GIS data portal, the LA Metro developer portal, and https://data.lacity.org.
+
+The software itself is a Node.js application that loads the scalable map and then fetches dynamic information for each location using the Google Places API. The idea being that popular places change frequently, so the map can be refreshed based upon Google categorization and ranking of places.
 
 ## Parking
 
-The parking page uses the ParkWhiz developer API to show the current availability of parking at the nearest location. 
+###[Real-time parking availability and information](http://la-parking.herokuapp.com/parking)
 
-The API has provides information about the amenties at the current lot. 
-
+The parking application uses the ParkWhiz developer API to show the current availability of parking at the current location, including the current price, number of available spaces, and a list of amenities, such as reserved parking, restrooms, and shuttle service. This application would integrate with an existing payment system and in some cases accept mobile payment. An electronic or printed receipt would include the location of the parking structure and a QR code link to the information map.
 
 <table>
 	<thead>
