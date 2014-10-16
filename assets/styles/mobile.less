@@ -2,6 +2,7 @@
 @media only screen 
 and (min-device-width : 320px) 
 and (max-device-width : 568px) {
+	
 	/* Styles */
 	#parks-list {
 	    padding-bottom: none;
@@ -10,11 +11,18 @@ and (max-device-width : 568px) {
 	#map {
 		height:80% !important;
 		width:100% !important;
+		image-resolution: 2dppx;
 		margin-left:0px;
 		margin-top: 0px !important;
 		-webkit-box-shadow: inset 4px 4px 4px -2px rgba(0,0,0,0.75);
 		-moz-box-shadow: inset 4px 4px 4px -2px rgba(0,0,0,0.75);
 		box-shadow: inset 4px 4px 4px -2px rgba(0,0,0,0.75);
+	}
+	
+	.leaflet-marker-icon {
+		display:none;
+		height: 28px;
+		width:28px;
 	}
 	
 	hr {

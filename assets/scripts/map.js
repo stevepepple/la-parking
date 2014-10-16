@@ -86,6 +86,8 @@ function init() {
 			initParking(getPlace);
 		}
 	});	
+	
+	scrollMap();
 }
 
 function getPlace(location) {
@@ -97,7 +99,7 @@ function getPlace(location) {
 		
 		if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
 		 // some code..
-			map.setView(location, 16);
+			map.setView(location, 17);
 			overview_map.setView(location, 10);
 
 		} else {
@@ -118,9 +120,17 @@ function getPlace(location) {
 	if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
 
 	 	var icon = L.icon({
-	 	    iconUrl: 'images/icons/parking.png',
-	 	    iconSize: [38, 38], // size of the icon
+	 	    iconUrl: 'images/icons/you.png',
+	 	    iconSize: [60, 36], // size of the icon
 	 	});
+
+	 	var parking = L.icon({
+	 	    iconUrl: 'images/icons/parking.png',
+			iconAnchor:   [42, 42],
+	 	    iconSize: [28, 28], // size of the icon
+	 	});
+		
+		L.marker([location.lat, location.lng], { icon: parking, zIndexOffset: 250 }).addTo(featureLayer);
 	}
 	
 	L.marker([location.lat, location.lng], { icon: icon, zIndexOffset: 250 }).addTo(featureLayer);
@@ -237,6 +247,16 @@ function getPlace(location) {
 			    iconUrl: 'images/icons/' + place.types[0] + '.png',
 			    iconSize:     ['36', '36'], // size of the icon
 			});
+			
+			if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+
+				var icon = L.icon({
+				    iconUrl: 'images/icons/' + place.types[0] + '.png',
+				    iconSize:     ['29', '28'], // size of the icon
+				});
+		
+			}
+			
 
 			var marker = L.marker([lat, lng], { icon: icon });
 			console.log(marker)
@@ -306,6 +326,26 @@ function showParking() {
 	
 }
 
+function scrollMap() {
+    var timeout;
+
+    window.addEventListener('scroll', function(ev) {
+
+        if (timeout) {
+            clearTimeout(timeout);
+        }
+
+        timeout = setTimeout(function() {
+
+            if (window.scrollY > 0) {
+                var cover = document.querySelector('div.cover');
+                cover.style.display = 'none';
+            }
+
+        }, 200);
+
+    });
+}
 
 function setMapSize() {
 	/*
