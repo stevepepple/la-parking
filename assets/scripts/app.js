@@ -161,6 +161,7 @@ function clearFeatures() {
 
 	for (var i = 0; i < App.features.length; i++) {
 		map.removeLayer(App.features[i]); 
+		overview_map.removeLayer(App.features[i]); 
 	}
 		
 }

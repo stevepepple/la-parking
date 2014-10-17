@@ -93,7 +93,8 @@ function init() {
 function getPlace(location) {
 	
 	clearFeatures();
-	var featureLayer = L.mapbox.featureLayer()
+	var featureLayer = L.mapbox.featureLayer();
+	var overview_layer = L.mapbox.featureLayer();
 	
 	setTimeout(function(){
 		
@@ -104,7 +105,7 @@ function getPlace(location) {
 
 		} else {
 			map.setView(location, 17);
-			overview_map.setView(location, 12);
+			overview_map.setView(location, 13);
 		}
 		
 	}, 200);
@@ -115,7 +116,6 @@ function getPlace(location) {
  	});
 	
 	var overview_icon = L.icon({ iconUrl: 'images/icons/you.png', iconSize: [60, 36], });	
-	
 
 	if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
 
@@ -144,20 +144,29 @@ function getPlace(location) {
 	overview_distance = overview.toMeters();
 	
     var walk_range = L.circle([location.lat, location.lng], distance, App.circle_options);
-	walk_range.addTo(featureLayer);
+	var overview_range = L.circle([location.lat, location.lng], overview_distance, App.circle_options);
 	
-	var bounds = walk_range.getBounds()
+	walk_range.addTo(featureLayer);
+	overview_range.addTo(overview_layer);
+	
+	var bounds = walk_range.getBounds();
+	var overview_bounds = overview_range.getBounds();
 
 	parks_ui.render();
 	
 	/* TODO: put 5 minute marker here; Use north and lat center position?  */
 	var icon = L.icon({
 	    iconUrl: 'images/icons/5-min.png',
-	    iconSize:     [160, 36], // size of the icon
-		iconAnchor: ['-5vw', '-5vw']
+	    iconSize:  [160, 36]
 	});
 	
-	L.marker([bounds.getNorthWest().lat, bounds.getNorthWest().lng], { icon: icon, zIndexOffset: 250 }).addTo(featureLayer);
+	var overview_icon = L.icon({
+	    iconUrl: 'images/icons/15-min.png',
+	    iconSize:  [136, 31]
+	});
+	
+	L.marker([bounds.getNorth() - .001, bounds.getWest() + 0.0015], { icon: icon, zIndexOffset: 250 }).addTo(featureLayer);
+	L.marker([overview_bounds.getNorth() - .004, overview_bounds.getWest() + 0.006], { icon: overview_icon, zIndexOffset: 250 }).addTo(overview_layer);
 	
 	var key = "AIzaSyA-YiurRX6GixuExPSrQgbcOwcUWinAn54";
 	
@@ -171,7 +180,7 @@ function getPlace(location) {
 	service.nearbySearch(request, showBuses);
 	
 	/* TODO: Move callback to a fucntion */
-	var types = ['airport', 'atm', 'park', 'cafe', 'cemetery', 'church', 'city_hall', 'courthouse', 'department_store', 'police', 'restaurant', 'school'];
+	var types = ['airport', 'atm', 'park', 'cafe', 'cemetery', 'church', 'city_hall', 'courthouse', 'department_store', 'hospital', 'museum', 'police', 'restaurant', 'school', 'stadium', 'university'];
 	var request = {
 	    location : coord,
 	    radius: distance + 40, // .25 miles
@@ -181,8 +190,11 @@ function getPlace(location) {
 	service.nearbySearch(request, showPlaces);
 	
 	featureLayer.addTo(map);
+	overview_layer.addTo(overview_map);
+	
 	map.fitBounds(featureLayer.getBounds());
 	App.features.push(featureLayer);
+	App.features.push(overview_layer);
 	
 	function showPlaces(results, status) {
 		used_types = [];
@@ -259,7 +271,6 @@ function getPlace(location) {
 			
 
 			var marker = L.marker([lat, lng], { icon: icon });
-			console.log(marker)
 			//marker.feature.properties.title = 'Capital Pride Parade'
 			marker.bindPopup(place.name);
 			marker.addTo(featureLayer)

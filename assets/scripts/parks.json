@@ -9,7 +9,7 @@
 		"name":		    "North Hollywood Station",
 		"address":		"5420 Lankershim Blvd North Hollywood, CA 91601",
 		"coordinates":	[34.16916, -118.37676199999999]	,
-		"printed_places" : { "north" : [], "east" :["East Valley High School"], "south" : [], "west" : [] }
+		"printed_places" : { "north" : [], "east" :["East Valley High School"], "south" : ["North Hollywood Metro"], "west" : [] }
 	},
 	{
 		"name":		    "Willshire Vermont Station",
@@ -19,28 +19,28 @@
 
 	},
 	{
-		"name":		    "LA Convention Center",
-		"address":		"NA",
+		"name":		    "L.A. Convention Center",
+		"address":		"618-698 Cameron Ln. Los Angeles, CA 90015",
 		"coordinates":	[34.041680, -118.266740],
-		"printed_places" : { "north" : [], "east" :[], "south" : [], "west" : [] }
+		"printed_places" : { "north" : ["Staples Center"], "east" :[], "south" : [], "west" : ["L.A. Convention Center"] }
 	},
 	{
 		"name":		    "Main / Chavez",
 		"address":		"801 Rosabell Street, Los Angeles, CA 90012, USA",
 		"coordinates":	[34.0596186, -118.2351744],
-		"printed_places" : { "north" : [], "east" :[], "south" : [], "west" : [] }
+		"printed_places" : { "north" : ["Chinatown Station"], "east" :[], "south" : [], "west" : [] }
 	},
 	{
 		"name":		    "Financial Dist.",
 		"address":		"585-599 S Boylston St Los Angeles, CA 90017",
 		"coordinates":	[34.053460, -118.260045],
-		"printed_places" : { "north" : [], "east" :[], "south" : [], "west" : [] }
+		"printed_places" : { "north" : ["L.A. Center Studios"], "east" :["Downtown YMCA"], "south" : [], "west" : [] }
 	},
 	{
 		"name":		    "Fashion Dist. / Olympic Blvd.",
 		"address":		"250-298 W Olympic Blvd Los Angeles, CA 90015",
 		"coordinates":	[34.041410, -118.258406],
-		"printed_places" : { "north" : [], "east" :[], "south" : [], "west" : [] }
+		"printed_places" : { "north" : ["7th Street Metro"], "east" :["Downtown Los Angeles"], "south" : [], "west" : [] }
 	},
 	{
 		"name":		    "Grand Central Market",
@@ -58,7 +58,7 @@
 		"name":		    "2nd Street / Little Toyko",
 		"address":		"200 E 2nd St Los Angeles, CA 90012",
 		"coordinates":	[34.050093, -118.243276],
-		"printed_places" : { "north" : [], "east" :[], "south" : [], "west" : [] }
+		"printed_places" : { "north" : [], "east" :["Little Toyko Arts District"], "south" : [], "west" : [] }
 	},
 	{
 		"name":		    "MacArthur Park Station",
@@ -76,18 +76,18 @@
 		"name":		    "Mid-Wilshire",
 		"address":		"6101 Wilshire Blvd Los Angeles, CA 90048",
 		"coordinates":	[34.063391, -118.36168900000001],
-		"printed_places" : { "north" : [], "east" :[], "south" : [], "west" : [] }
+		"printed_places" : { "north" : [], "east" :[], "south" : [], "west" : ["Hancock Park"] }
 	},
 	{
 		"name":		    "Pico Station",
 		"address":		"601 W Pico Blvd Los Angeles, CA 90015",
 		"coordinates":	[34.040301, -118.266907],
-		"printed_places" : { "north" : [], "east" :[], "south" : [], "west" : [] }
+		"printed_places" : { "north" : ["Staples Center"], "east" :[], "south" : [], "west" : [] }
 	},
 	{
 		"name":		    "West Hollywood / Vine",
 		"address":		"1698 Argyle Ave Los Angeles, CA 90028",
 		"coordinates":	[34.101472, -118.325027],
-		"printed_places" : { "north" : [], "east" :[], "south" : [], "west" : [] }
+		"printed_places" : { "north" : [], "east" :[], "south" : ["Sunset Blvd."], "west" : [] }
 	}		
 ]
