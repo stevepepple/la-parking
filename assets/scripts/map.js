@@ -78,6 +78,16 @@ function init() {
 
 	map.fitBounds([[38.013476231041935, -91.5380859375], [28.806173508854776, -115.24658203125]]);
 	
+	/* For the web kiosk, disable panning and zooming */
+	if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+		// do nothing
+	} else {
+		//map.dragging.disable();
+		//map.touchZoom.disable();
+		//map.doubleClickZoom.disable();
+		map.scrollWheelZoom.disable();
+	}
+	
 	parks_list = new App.ParksList();
 	
 	parks_list.fetch({
@@ -135,7 +145,7 @@ function getPlace(location) {
 	
 	L.marker([location.lat, location.lng], { icon: icon, zIndexOffset: 250 }).addTo(featureLayer);
 	
-	L.marker([location.lat, location.lng], { icon: overview_icon, zIndexOffset: 250 }).addTo(overview_map);
+	L.marker([location.lat, location.lng], { icon: overview_icon, zIndexOffset: 250 }).addTo(overview_layer);
 	
 	var distance = 0.25; // miles
 	distance = distance.toMeters();
@@ -180,7 +190,7 @@ function getPlace(location) {
 	service.nearbySearch(request, showBuses);
 	
 	/* TODO: Move callback to a fucntion */
-	var types = ['airport', 'atm', 'park', 'cafe', 'cemetery', 'church', 'city_hall', 'courthouse', 'department_store', 'hospital', 'museum', 'police', 'restaurant', 'school', 'stadium', 'university'];
+	var types = ['airport', 'atm', 'park', 'cafe', 'cemetery', 'church', 'city_hall', 'courthouse', 'department_store', 'grocery_or_supermarket', 'hospital', 'library', 'lodging', 'museum', 'mosque', 'parking', 'place_of_worship', 'police', 'restaurant', 'school', 'stadium', 'taxi_stand', 'university'];
 	var request = {
 	    location : coord,
 	    radius: distance + 40, // .25 miles
@@ -204,10 +214,13 @@ function getPlace(location) {
 	
 		for (var i = 0; i < results.length; i++) {
 			var place = results[i];
+			var type_class = "";
 		
 			/* TODO: Get details for every place? */
 			for (var j = 0; j < place.types.length; j++) {
 				var type = place.types[j];
+				
+				type_class += " " + type;
 			
 				if (type == "train_station" || type == "airport" || type == "bus_station") {
 			
@@ -217,6 +230,8 @@ function getPlace(location) {
 				};
 			
 			}; 
+			
+			console.log()
 								
 			var type = place.types[0];
 			var path = [coord, place.geometry]
