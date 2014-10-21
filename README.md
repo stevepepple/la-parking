@@ -36,6 +36,11 @@ The parking application uses the ParkWhiz developer API to show the current avai
 		<td>There is nearby bus service (added by me, as I've only selected parking lots near public transit)</td>
 	</tr>
 	<tr>
+		<td><img src="https://raw.githubusercontent.com/stevepepple/la-parking/master/assets/images/icons/charging_station.png" width="40px"/></td>
+		<td>Has a charging station for electric vehicles</td>
+	</tr>
+	
+	<tr>
 		<td><img src="https://raw.githubusercontent.com/stevepepple/la-parking/master/assets/images/icons/eticket.png" width="40px"/></td>
 		<td>Accepts mobile payment</td>
 	</tr>
