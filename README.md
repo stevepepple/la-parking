@@ -19,7 +19,7 @@ The software itself is a Node.js application that loads the scalable map and the
 
 The parking application uses the ParkWhiz developer API to show the current availability of parking at the current location, including the current price, number of available spaces, and a list of amenities, such as reserved parking, restrooms, and shuttle service. This application would integrate with an existing payment system and in some cases accept mobile payment. An electronic or printed receipt would include the location of the parking structure and a QR code link to the information map.
 
-<!--table>
+<table>
 	<thead>
 	<tr>
 		<th>Icon</th>
@@ -68,7 +68,7 @@ The parking application uses the ParkWhiz developer API to show the current avai
 		<td>Has a shuttle service</td>
 	</tr>
 	</tbody>
-</table-->
+</table>
 
 ## Running Locally
 
@@ -78,6 +78,7 @@ Make sure you have [Node.js](http://nodejs.org/) and the [Heroku Toolbelt](https
 $ git clone git@github.com:heroku/node-js-getting-started.git # or clone your own fork
 $ cd node-js-getting-started
 $ npm install
+$ bower install
 $ npm start
 ```
 
