@@ -79,12 +79,6 @@
 		"printed_places" : { "north" : [], "east" :[], "south" : [], "west" : ["Hancock Park"] }
 	},
 	{
-		"name":		    "Pico Station",
-		"address":		"601 W Pico Blvd Los Angeles, CA 90015",
-		"coordinates":	[34.040301, -118.266907],
-		"printed_places" : { "north" : ["Staples Center"], "east" :[], "south" : [], "west" : [] }
-	},
-	{
 		"name":		    "West Hollywood / Vine",
 		"address":		"1698 Argyle Ave Los Angeles, CA 90028",
 		"coordinates":	[34.101472, -118.325027],
