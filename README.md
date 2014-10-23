@@ -1,23 +1,71 @@
-# Wayfinding Kiosk
+# Wayfinding Map for Info Kiosk
 
-This is one part of my idea for transforming parking lots into a place for wayfinding, city information, and access to public transportation. 
+This is one part of my idea for transforming parking lots into a place for wayfinding, city information, and access to public transportation. As part of this project I wanted to create a beautiful looking map that was also dynamically generated using web technologies.
 
-This project was created for Ford's Parking Lot 2.0 challenge. 
+This project was created for Ford's Parking Lot 2.0 challenge. [Vote for the project](http://parking.challengepost.com/submissions/28099-parking-kiosks-for-urban-wayfinding-park-here-l-a)
 
+[Read a full description of the project here](https://medium.com/urban-design-and-planning/payment-kiosks-for-urban-wayfinding-park-here-l-a-172720c4cba6)
+
+
+<img src="https://d262ilb51hltx0.cloudfront.net/max/1000/1*NumPBa7C8RBJO2iFfEsgvw.jpeg"/>
 
 ## Map
 
+This project uses a Node.js application that loads the scalable map and then fetches dynamic information for each location using the Google Places API. The idea being that popular places change frequently, so the map can be refreshed based upon Google categorization and ranking of places.
+
+I used Backbone.js for the MV* framework.
+
 ###[Dynamic wayfinding map](http://la-parking.herokuapp.com/map) 
 
-The wayfinding map displays the user current location in relation to the nearby surroundings. I created the visual design of the scalable map using Mapbox Studio. This map will actually work for any major city in the United States. I then added several transit layers using the L.A. county GIS data portal, the LA Metro developer portal, and https://data.lacity.org.
+The wayfinding map displays the user current location in relation to the nearby surroundings. I created the visual design of the scalable map using [Mapbox Studio](https://www.mapbox.com/mapbox-studio/#darwin). This map will actually work for any major city in the United States. I then added several transit layers using the [L.A. county GIS data portal](http://egis3.lacounty.gov/dataportal/), the [LA Metro developer portal](http://developer.metro.net/introduction/gis-data/download-gis-data/), and https://data.lacity.org.
 
-The software itself is a Node.js application that loads the scalable map and then fetches dynamic information for each location using the Google Places API. The idea being that popular places change frequently, so the map can be refreshed based upon Google categorization and ranking of places.
+Mapbox studio is a great tool that allows you to style maps with CSS. Here's a basic example from my project:
+
+```
+@land: #88888A;
+@water: #8B9FAC;
+@motorway:          #424645;
+@main:              #424645;
+@street:            #424645;
+@street_limited:    #424645;
+  
+Map {
+  [zoom>=17] {
+    background-color: @land; 
+  }
+  buffer-size: 256;
+}
+
+@land: #88888A;
+@water: #8B9FAC;
+  
+#building [zoom<=14]{
+  // At zoom level 13, only large buildings are included in the
+  // vector tiles. At zoom level 14+, all buildings are included.
+  polygon-fill: darken(@land, 20%);
+  opacity: 0.0;
+}
+
+#place_label[zoom>=8][localrank<=3] {
+  text-name: @name;
+  text-face-name: @sans;
+  text-wrap-width: 120;
+  text-wrap-before: true;
+  text-fill: #FFF;
+}
+```
+
+[Here is a link to the styled tiles](https://api.tiles.mapbox.com/v4/osaez.0u8ilik9/page.html?access_token=pk.eyJ1Ijoib3NhZXoiLCJhIjoiOExKN0RWQSJ9.Hgewe_0r7gXoLCJHuupRfg#19/34.04900/-118.23970), which are hosted with Mapbox. 
+
+The map generates a QR code for the current location. This was super easy to implement using the [QRCode.js library](https://github.com/davidshimjs/qrcodejs).
 
 ## Parking
 
 ###[Real-time parking availability and information](http://la-parking.herokuapp.com/parking)
 
-The parking application uses the ParkWhiz developer API to show the current availability of parking at the current location, including the current price, number of available spaces, and a list of amenities, such as reserved parking, restrooms, and shuttle service. This application would integrate with an existing payment system and in some cases accept mobile payment. An electronic or printed receipt would include the location of the parking structure and a QR code link to the information map.
+The parking application uses the [ParkWhiz developer API](http://www.parkwhiz.com/developers/) to show the current availability of parking at the current location, including the current price, number of available spaces, and a list of amenities, such as reserved parking, restrooms, and shuttle service. This application would integrate with an existing payment system and in some cases accept mobile payment. An electronic or printed receipt would include the location of the parking structure and a QR code link to the information map.
+
+The ParkWhiz API works well. (However, in many responses the number of available spaces seems to frequently return 10 spaces.) 
 
 <table>
 	<thead>
@@ -80,21 +128,11 @@ The parking application uses the ParkWhiz developer API to show the current avai
 Make sure you have [Node.js](http://nodejs.org/) and the [Heroku Toolbelt](https://toolbelt.heroku.com/) installed.
 
 ```sh
-$ git clone git@github.com:heroku/node-js-getting-started.git # or clone your own fork
+$ git clone https://github.com/stevepepple/la-parking.git # or clone your own fork
 $ cd node-js-getting-started
 $ npm install
 $ bower install
 $ npm start
 ```
 
-Your app should now be running on [localhost:5000](http://localhost:5000/).
-
-## Documentation
-
-For more information about using Node.js on Heroku, see these Dev Center articles:
-
-- [Getting Started with Node.js on Heroku](https://devcenter.heroku.com/articles/getting-started-with-nodejs)
-- [Heroku Node.js Support](https://devcenter.heroku.com/articles/nodejs-support)
-- [Node.js on Heroku](https://devcenter.heroku.com/categories/nodejs)
-- [Best Practices for Node.js Development](https://devcenter.heroku.com/articles/node-best-practices)
-- [Using WebSockets on Heroku with Node.js](https://devcenter.heroku.com/articles/node-websockets)
+The app will run on [localhost:5000](http://localhost:5000/map).
